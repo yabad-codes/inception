@@ -1,0 +1,9 @@
+version: '3.7'
+services:
+  nginx:
+    container_name: nginx
+    build: ./requirements/nginx/
+    image: nginx:42
+    ports:
+      - "443:443"
+    restart: on-failure
