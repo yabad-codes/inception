@@ -7,3 +7,9 @@ services:
     ports:
       - "443:443"
     restart: on-failure
+  mariadb:
+    container_name: mariadb
+    build: ./requirements/mariadb/
+    image: mariadb:42
+    env_file: .env
+    restart: on-failure
