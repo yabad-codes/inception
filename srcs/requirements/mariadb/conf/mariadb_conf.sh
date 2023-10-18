@@ -5,10 +5,13 @@ if [ ! -d "/run/mysqld" ]; then
 	chown -R mysql:mysql /run/mysqld
 fi
 
+sed -i "s|skip-networking|#skip-networking|g" /etc/my.cnf.d/mariadb-server.cnf
+sed -i "s|#bind-address=0.0.0.0|bind-address=0.0.0.0|g" /etc/my.cnf.d/mariadb-server.cnf
+
 if [ ! -d "/var/lib/mysql/mysql" ]; then
 	chown -R mysql:mysql /var/lib/mysql
 	
-	mysql_install_db --basedir=/usr --datadir=/var/lib/mysql --user=mysql --rpm > /dev/null
+	mariadb-install-db --datadir=/var/lib/mysql --user=mysql --skip-test-db
 
 	file=/tmp/.tmp
 	cat << EOF > $file
@@ -24,11 +27,8 @@ CREATE USER '$WP_DB_USER'@'localhost' IDENTIFIED BY '$WP_DB_PASS';
 GRANT ALL PRIVILEGES ON $WP_DB_NAME.* TO '$WP_DB_USER'@'localhost';
 FLUSH PRIVILEGES;
 EOF
-	/usr/bin/mysqld --user=mysql --bootstrap < $file
+	mariadbd --user=mysql --bootstrap < $file
 	rm -f $file
 fi
 
-sed -i "s|skip-networking|#skip-networking|g" /etc/my.cnf.d/mariadb-server.cnf
-sed -i "s|#bind-address=0.0.0.0|bind-address=0.0.0.0|g" /etc/my.cnf.d/mariadb-server.cnf
-
-exec /usr/bin/mysqld --user=mysql --console
+exec /usr/bin/mysqld --user=mysql --bind-address=0.0.0.0
