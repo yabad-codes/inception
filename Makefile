@@ -26,6 +26,9 @@ status:
 logs:
 	docker-compose -f ./srcs/docker-compose.yml logs
 
+ps:
+	docker-compose -f ./srcs/docker-compose.yml ps
+
 setup:
 	sudo mkdir -p /home/${LOGIN}/
 	sudo mkdir -p ${DATA_PATH}
