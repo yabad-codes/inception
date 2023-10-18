@@ -2,7 +2,7 @@ FROM alpine:3.18
 
 RUN apk update && \
 	apk upgrade && \
-	apk add --no-cache nginx \
+	apk add nginx \
 			openssl
 
 COPY ./tools/nginx_conf.sh /tmp/nginx_conf.sh
