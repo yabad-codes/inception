@@ -7,4 +7,6 @@ RUN apk update && \
 
 COPY ./conf/mariadb_conf.sh /tmp/mariadb_conf.sh
 
+EXPOSE 3306
+
 ENTRYPOINT [ "sh", "/tmp/mariadb_conf.sh" ]
