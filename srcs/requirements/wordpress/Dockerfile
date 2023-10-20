@@ -10,9 +10,7 @@ RUN apk update && \
 			php-phar \
 			php-mbstring \
 			php-curl \
-			mariadb-client \
-			curl \
-			vim
+			mariadb-client
 
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
 	chmod +x wp-cli.phar && \
