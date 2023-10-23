@@ -1,0 +1,99 @@
+/* Google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #36454f;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.circle1,
+.circle2,
+.circle3 {
+  height: 12rem;
+  width: 12rem;
+  background: white;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.1)
+  );
+  border-radius: 50%;
+  position: absolute;
+  top: 63%;
+  left: 45%;
+  box-shadow: 5px 5px 60px 0px #848484;
+}
+
+.circle2 {
+  background: linear-gradient(
+    to left bottom,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.1)
+  );
+  left: 20%;
+  top: 14%;
+  height: 15rem;
+  width: 15rem;
+}
+
+.circle3 {
+  top: 35%;
+  left: 70%;
+  width: 10rem;
+  height: 10rem;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.card {
+  background: white;
+  height: 70%;
+  width: 60%;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+  border-radius: 2rem;
+  z-index: 2;
+  backdrop-filter: blur(1rem);
+  color: white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header {
+  border-bottom: 3px solid white;
+  margin: 90px 0px;
+  text-transform: capitalize;
+}
+
+.paragraph {
+  font-size: 1.3rem;
+  width: 70%;
+  text-align: center;
+  word-spacing: 0.1rem;
+  letter-spacing: 0.03rem;
+}
+
+p span {
+  border-bottom: 2px solid white;
+  font-weight: 600;
+  white-space: nowrap;
+}
