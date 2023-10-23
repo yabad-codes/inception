@@ -38,6 +38,30 @@ services:
     depends_on:
       - mariadb
 
+  portfolio:
+    container_name: portfolio
+    build: ./requirements/bonus/portfolio/
+    image: portfolio:yabad1337
+    restart: on-failure
+    volumes:
+      - ./requirements/bonus/portfolio/src:/var/www/html/portfolio
+    networks:
+      - inception
+    ports:
+      - "1337:1337"
+
+  adminer:
+    container_name: adminer
+    build: ./requirements/bonus/adminer/
+    image: adminer:42
+    restart: on-failure
+    networks:
+      - inception
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mariadb
+
 networks:
   inception:
     driver: bridge
