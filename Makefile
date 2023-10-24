@@ -6,31 +6,31 @@ ENV = LOGIN=${LOGIN} DATA_PATH=${DATA_PATH} DOMAIN=${LOGIN}.42.fr
 all: up
 
 up: setup
-	docker-compose -f ./srcs/docker-compose.yml up -d
+	sudo docker-compose -f ./srcs/docker-compose.yml up -d
 
 down:
-	docker-compose -f ./srcs/docker-compose.yml down
+	sudo docker-compose -f ./srcs/docker-compose.yml down
 
 start:
-	docker-compose -f ./srcs/docker-compose.yml start
+	sudo docker-compose -f ./srcs/docker-compose.yml start
 
 stop:
-	docker-compose -f ./srcs/docker-compose.yml stop
+	sudo docker-compose -f ./srcs/docker-compose.yml stop
 
 restart:
-	docker-compose -f ./srcs/docker-compose.yml restart
+	sudo docker-compose -f ./srcs/docker-compose.yml restart
 
 build:
-	docker-compose -f ./srcs/docker-compose.yml build
+	sudo docker-compose -f ./srcs/docker-compose.yml build
 
 status:
-	docker-compose -f ./srcs/docker-compose.yml ps
+	sudo docker-compose -f ./srcs/docker-compose.yml ps
 
 logs:
-	docker-compose -f ./srcs/docker-compose.yml logs
+	sudo docker-compose -f ./srcs/docker-compose.yml logs
 
 ps:
-	docker-compose -f ./srcs/docker-compose.yml ps
+	sudo docker-compose -f ./srcs/docker-compose.yml ps
 
 setup:
 	sudo mkdir -p /home/${LOGIN}/

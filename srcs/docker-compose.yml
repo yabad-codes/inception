@@ -43,8 +43,6 @@ services:
     build: ./requirements/bonus/portfolio/
     image: portfolio:yabad1337
     restart: on-failure
-    volumes:
-      - ./requirements/bonus/portfolio/src:/var/www/html/portfolio
     networks:
       - inception
     ports:
