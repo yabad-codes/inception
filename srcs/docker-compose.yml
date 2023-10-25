@@ -60,6 +60,18 @@ services:
     depends_on:
       - mariadb
 
+  redis:
+    container_name: redis
+    build: ./requirements/bonus/redis/
+    image: redis:42
+    restart: on-failure
+    networks:
+      - inception
+    ports:
+      - "6379:6379"
+    depends_on:
+      - nginx
+
 networks:
   inception:
     driver: bridge
