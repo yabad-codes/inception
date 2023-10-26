@@ -27,8 +27,12 @@ status:
 logs:
 	sudo docker-compose -f ./srcs/docker-compose.yml logs
 
-ps:
-	sudo docker-compose -f ./srcs/docker-compose.yml ps
+clean: down
+	sudo rm -rf ${DATA_PATH}
+
+fclean: clean
+	docker system prune -f -a --volumes
+	docker volume rm srcs_db-data srcs_wp-data
 
 setup:
 	sudo mkdir -p ${DATA_PATH}
