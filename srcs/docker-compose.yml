@@ -7,7 +7,7 @@ services:
     ports:
       - "443:443"
     volumes:
-      - /home/yabad/data/wordpress-data:/var/www/html/wordpress
+      - wp-data:/var/www/html/wordpress
     restart: on-failure
     networks:
       - inception
@@ -21,7 +21,7 @@ services:
     env_file: .env
     restart: on-failure
     volumes:
-      - /home/yabad/data/mariadb-data:/var/lib/mysql
+      - db-data:/var/lib/mysql
     networks:
       - inception
     
@@ -32,7 +32,7 @@ services:
     env_file: .env
     restart: on-failure
     volumes:
-      - /home/yabad/data/wordpress-data:/var/www/html/wordpress
+      - wp-data:/var/www/html/wordpress
     networks:
       - inception
     depends_on:
@@ -60,18 +60,20 @@ services:
     depends_on:
       - mariadb
 
-  redis:
-    container_name: redis
-    build: ./requirements/bonus/redis/
-    image: redis:42
-    restart: on-failure
-    networks:
-      - inception
-    ports:
-      - "6379:6379"
-    depends_on:
-      - nginx
-
 networks:
   inception:
     driver: bridge
+
+volumes:
+  db-data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: /home/yabad/data/db-data
+  wp-data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: /home/yabad/data/wp-data
