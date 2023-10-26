@@ -1,7 +1,5 @@
 LOGIN = yabad
-DOMAIN = ${LOGIN}.42.fr
 DATA_PATH = /home/${LOGIN}/data
-ENV = LOGIN=${LOGIN} DATA_PATH=${DATA_PATH} DOMAIN=${LOGIN}.42.fr
 
 all: up
 
@@ -33,7 +31,6 @@ ps:
 	sudo docker-compose -f ./srcs/docker-compose.yml ps
 
 setup:
-	sudo mkdir -p /home/${LOGIN}/
 	sudo mkdir -p ${DATA_PATH}
-	sudo mkdir -p ${DATA_PATH}/mariadb-data
-	sudo mkdir -p ${DATA_PATH}/wordpress-data
+	sudo mkdir -p ${DATA_PATH}/db-data
+	sudo mkdir -p ${DATA_PATH}/wp-data
